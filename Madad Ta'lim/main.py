@@ -45,9 +45,9 @@ def super_admin_menu():
             show_auth_menu()
         else:
             print("\nWrong choice !")
-            return super_admin_menu()()
+            return super_admin_menu()
     except KeyboardInterrupt:
-        return super_admin_menu()()
+        return super_admin_menu()
     
 
 def admin_menu():
@@ -89,6 +89,28 @@ def teacher_menu():
             pass
         else:
             print("\nWrong choice !")
-            return teacher_menu()()
+            return teacher_menu()
     except KeyboardInterrupt:
-        return teacher_menu()()
+        return teacher_menu()
+    
+
+def student_menu():
+    text = """
+    1. Show all users
+    2. Show all posts
+    3. Search with keywords   
+    4. Quit
+"""
+    print(text)
+    try:
+        user_input = input("Enter your choice: ")
+        if user_input == "1":
+            pass
+        elif user_input == "4":
+            print("\nThakns for wisit")
+            pass
+        else:
+            print("\nWrong choice !")
+            return student_menu()
+    except KeyboardInterrupt:
+        return student_menu()
