@@ -1,0 +1,11 @@
+[
+    {
+        "name": "english",
+        "teacher": "Azi",
+        "max_students": "10",
+        "start_time": "10:00",
+        "end_time": "12:00",
+        "status": "monday, wednesdaym friday",
+        "date": "14/08/2024 02:11:21"
+    }
+]

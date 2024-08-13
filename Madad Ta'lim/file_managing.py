@@ -4,6 +4,18 @@ import os
 if not os.path.exists('files'):
     os.mkdir('files')
 
+if not os.path.exists('groups'):
+    os.mkdir('groups')
+
+if not os.path.exists('messages'):
+    os.mkdir('messages')
+
+if not os.path.exists('my_messages'):
+    os.mkdir('my_messages')
+
+if not os.path.exists('new_messages'):
+    os.mkdir('new_messages')
+
 
 class JsonManager:
     def __init__(self, file_name):
@@ -52,6 +64,7 @@ class JsonManager:
 users_manager = JsonManager("files/users.json")
 admins_manager = JsonManager("files/admins.json")
 teachers_manager = JsonManager("files/teachers.json")
+groups_manager = JsonManager("groups/gruops.json")
 my_messages_manager = JsonManager("my_messages/message.json")
 new_messages_manager = JsonManager("new_messages/message.json")
 messages_manager = JsonManager("messages/message.json")

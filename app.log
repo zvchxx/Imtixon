@@ -196,3 +196,65 @@
 2024-08-14 00:41:28 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
 2024-08-14 00:41:56 - logs - INFO - Function: login args: () kwargs: {} result: admin
 2024-08-14 00:42:20 - logs - INFO - Function: send_gmail args: ('toshtemirovjobir6@gmail.com', 'Uwa', 'Tuda') kwargs: {} result: None
+2024-08-14 01:38:08 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:38:13 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:38:49 - logs - INFO - Function: login args: () kwargs: {} result: back
+2024-08-14 01:39:00 - logs - INFO - Function: login args: () kwargs: {} result: back
+2024-08-14 01:39:12 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 01:39:39 - logs - INFO - Function: add_admin args: () kwargs: {} result: menu
+2024-08-14 01:39:45 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:39:56 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:40:07 - logs - INFO - Function: login args: () kwargs: {} result: back
+2024-08-14 01:41:55 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:42:17 - logs - INFO - Function: login args: () kwargs: {} result: back
+2024-08-14 01:43:24 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:43:37 - logs - INFO - Function: login args: () kwargs: {} result: menu
+2024-08-14 01:48:43 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:48:54 - logs - INFO - Function: login args: () kwargs: {} result: menu
+2024-08-14 01:51:15 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:51:38 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:53:09 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:53:13 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:54:32 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:54:49 - logs - INFO - Function: login args: () kwargs: {} result: menu
+2024-08-14 01:58:33 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:58:43 - logs - INFO - Function: login args: () kwargs: {} result: menu
+2024-08-14 01:59:44 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 01:59:56 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 02:00:31 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 02:00:56 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 02:01:10 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 02:02:33 - logs - ERROR - Function: add_group args: () kwargs: {} exception: 'JsonManager' object is not iterable
+2024-08-14 02:03:32 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 02:03:47 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 02:04:43 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 02:04:52 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 02:05:50 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 02:06:00 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 02:06:40 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 02:06:51 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 02:08:59 - logs - INFO - Function: search_group args: () kwargs: {} result: menu
+2024-08-14 02:09:20 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 02:09:33 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 02:09:42 - logs - INFO - Function: see_group_list args: ({'name': 'Math', 'teacher': 'Azi', 'max_students': '20', 'start_time': '16:00', 'end_time': '18:00', 'status': 'monday, wednesday, friday', 'date': '14/08/2024 02:06:40'},) kwargs: {} result:  
+    Name: Math
+    Teacher: Azi
+    Max students: 20 
+    Start time: 16:00
+    End time: 18:00
+    Status: monday, wednesday, friday
+    Date: 14/08/2024 02:06:40
+
+2024-08-14 02:09:42 - logs - INFO - Function: search_group args: () kwargs: {} result: menu
+2024-08-14 02:09:49 - logs - INFO - Function: see_group_list args: ({'name': 'Math', 'teacher': 'Azi', 'max_students': '20', 'start_time': '16:00', 'end_time': '18:00', 'status': 'monday, wednesday, friday', 'date': '14/08/2024 02:06:40'},) kwargs: {} result:  
+    Name: Math
+    Teacher: Azi
+    Max students: 20 
+    Start time: 16:00
+    End time: 18:00
+    Status: monday, wednesday, friday
+    Date: 14/08/2024 02:06:40
+
+2024-08-14 02:09:49 - logs - INFO - Function: see_all_group args: () kwargs: {} result: menu
+2024-08-14 02:10:07 - logs - ERROR - Function: update_group_data args: () kwargs: {} exception: string indices must be integers, not 'str'
+2024-08-14 02:11:16 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu

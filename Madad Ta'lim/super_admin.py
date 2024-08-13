@@ -1,7 +1,3 @@
-import smtplib
-import threading
-import random
-
 from users import People
 from logs import log_decorator
 

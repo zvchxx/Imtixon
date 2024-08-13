@@ -113,19 +113,23 @@ def login():
     all_users = users_manager.read()
     all_admins = admins_manager.read()
 
+    index_a = 0
+    while index_a < len(all_admins):
+        if all_admins[index_a]['phone_number'] == phone_number and all_admins[index_a]['password'] == hashed_password and all_admins[index_a]['gmail'] == gmail:
+            all_admins[index_a]['is_login'] = True
+            admins_manager.write(all_admins)
+        index_a += 1
+        return "simple_admin"
+
     index = 0
     while index < len(all_users):
         if all_users[index]['phone_number'] == phone_number and all_users[index]['password'] == hashed_password and all_users[index]['gmail'] == gmail:
             all_users[index]['is_login'] = True
             users_manager.write(all_users)
-            return "menu"
         index += 1
-    while index < len(all_admins):
-        if all_admins[index]['phone_number'] == phone_number and all_admins[index]['password'] == hashed_password and all_admins[index]['gmail'] == gmail:
-            all_admins[index]['is_login'] = True
-            users_manager.write(all_admins)
-            return "simple_admin"
-        index += 1
+        return "menu"
+
+        
     users_manager.write(all_users)
     admins_manager.write(all_admins)
     print("Phone number not found, or password is incorrect")

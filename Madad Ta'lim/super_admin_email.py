@@ -10,6 +10,7 @@ from message import Message
 from logs import log_decorator
 
 
+@log_decorator
 def see_all_users():
     all_users = users_manager.read()
     num = 0
@@ -51,6 +52,7 @@ def send_gmail(to_user, subject, message):
         print(f"Failed {e}")
 
 
+@log_decorator
 def sent_all():
     all_users = users_manager.read()
 
@@ -75,6 +77,7 @@ def sent_all():
     return "menu"
 
 
+@log_decorator
 def sent_only_girls():
     all_users = users_manager.read()
 
@@ -100,6 +103,7 @@ def sent_only_girls():
     return "menu"
 
 
+@log_decorator
 def sent_only_boys():
     all_users = users_manager.read()
 
@@ -125,6 +129,7 @@ def sent_only_boys():
     return "menu"
 
 
+@log_decorator
 def send_message():
     print("""
     1. A message for all users
@@ -153,6 +158,7 @@ def send_message():
         return send_message()
     
 
+@log_decorator
 def see_all_messages():
     all_messages = messages_manager.read()
     num = 0

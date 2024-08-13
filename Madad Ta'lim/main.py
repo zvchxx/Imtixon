@@ -9,6 +9,9 @@ from super_admin import add_teacher, see_all_teacher, search_teacher
 
 
 from super_admin_email import see_all_users, send_message
+from admin import delete_group, update_group_data
+
+from admin import add_group, see_all_group, search_group
 
 
 def show_auth_menu():
@@ -76,7 +79,7 @@ def super_admin_menu():
 
 def admin_menu():
     text = """
-    1. Grup
+    1. Group
     2. Student
     3. Add studdent for grup
     4. Search 
@@ -159,13 +162,26 @@ def extra_a_group_menu():
     print(print_menu())
     choice = input("Enter your choice: ")
     if choice == "1":
-        pass
+        if "menu" == add_group():
+            extra_a_group_menu()
+    elif choice == "2":
+        if "menu" == search_group():
+            extra_a_group_menu()
+    elif choice == "3":
+        if "menu" == see_all_group():
+            extra_a_group_menu()
+    elif choice == "4":
+        if "menu" == delete_group():
+            extra_a_group_menu()
+    elif choice == "5":
+        if "menu" == update_group_data():
+            extra_a_group_menu()
     elif choice == "6":
         print("Thinks for visit!")
         admin_menu()
     else:
         print("Wrong choice !")
-        admin_menu()
+        extra_a_group_menu()
 
 
 def extra_a_student_menu():
