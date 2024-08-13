@@ -126,3 +126,11 @@ def logout_all():
         index += 1
     users_manager.write(all_users)
     return "menu"
+
+
+def active_user():
+    students = users_manager.read()
+    for student in students:
+        if student['is_login']:
+            return student
+    return False
