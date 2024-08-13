@@ -33,9 +33,9 @@ def show_auth_menu():
 
 def super_admin_menu():
     text = """
-    1. Show all users
-    2. Show all posts
-    3. Search with keywords   
+    1. Admin
+    2. Teacher
+    3. Send email
     4. Quit
 """
     print(text)
@@ -55,17 +55,19 @@ def super_admin_menu():
 
 def admin_menu():
     text = """
-    1. Show all users
-    2. Show all posts
-    3. Search with keywords   
-    4. Quit
+    1. Grup
+    2. Student
+    3. Add studdent for grup
+    4. Search 
+    5. Accept payment
+    6. Quit
 """
     print(text)
     try:
         user_input = input("Enter your choice: ")
         if user_input == "1":
             pass
-        elif user_input == "4":
+        elif user_input == "6":
             print("\nThakns for wisit")
             logout_all()
         else:
@@ -77,9 +79,9 @@ def admin_menu():
 
 def teacher_menu():
     text = """
-    1. Show all users
-    2. Show all posts
-    3. Search with keywords   
+    1. See a list of all groups
+    2. View the list of students by group
+    3. Start lesson 
     4. Quit
 """
     print(text)
@@ -99,9 +101,9 @@ def teacher_menu():
 
 def student_menu():
     text = """
-    1. Show all users
-    2. Show all posts
-    3. Search with keywords   
+    1. Show all groups
+    2. View the balance amount
+    3. The ability to change personal data
     4. Quit
 """
     print(text)
