@@ -57,7 +57,10 @@ def send_gmail(to_user, subject, message):
 
 def register():
     full_name = input("Enter your full name: ").strip().capitalize()
-    phone_number = input("Enter your phone number: ").strip().capitalize()
+    phone_number = input("Enter your phone number: ").strip()
+    if len(phone_number) < 7 and "+" in phone_number:
+        print("Incorrect gender!")
+        register()
     gender = input("Enter your gender (Famale/Male): ").strip().capitalize()
     if gender != "Famale" and gender != "Male":
         print("Incorrect gender!")
