@@ -69,11 +69,23 @@ def see_all_admin():
 
 @log_decorator    
 def search_admin():
-    plane: str = input('Enter should admin phone number: ').lower().strip()
+    plane: str = input('Enter should admin phone number: ').strip()
     all_admins = admins_manager.read()
 
     for admin in all_admins:
         if plane in admin['phone_number']:
             inf = see_admin_list(admin)
             print(inf)
+    return "menu"
+
+
+def delete_admin():
+    phone_number = input("Enter admin phone number: ").strip().lower()
+    all_admin = admins_manager.read()
+    new_admins = []
+    for admin in all_admin:
+        if admin['phone_number'].lower() != phone_number.lower():
+            new_admins.append(admin)
+    admins_manager.write(new_admins)
+    print('\nAdmin deleted successfully!\n')
     return "menu"
