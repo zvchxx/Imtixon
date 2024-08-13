@@ -1,6 +1,7 @@
 from users import login, register, logout_all, active_user
 from logs import log_settings
 
+
 def show_auth_menu():
     text = """
     1. Register      
@@ -42,7 +43,9 @@ def super_admin_menu():
     try:
         user_input = input("Enter your choice: ")
         if user_input == "1":
-            pass
+            extra_s_admin_menu()
+        elif user_input == "2":
+            extra_s_teacher_menu()
         elif user_input == "4":
             print("\nThakns for wisit")
             logout_all()
@@ -66,7 +69,9 @@ def admin_menu():
     try:
         user_input = input("Enter your choice: ")
         if user_input == "1":
-            pass
+            extra_a_group_menu()
+        elif user_input == "2":
+            extra_a_student_menu()
         elif user_input == "6":
             print("\nThakns for wisit")
             logout_all()
@@ -120,6 +125,69 @@ def student_menu():
     except KeyboardInterrupt:
         return student_menu()
     
+
+def print_menu():
+    return f"""
+    1. Add 
+    2. Search
+    3. Show all
+    4. Delete 
+    5. Update
+    6. Back
+    """
+
+
+def extra_a_group_menu():
+    print(print_menu())
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        pass
+    elif choice == "6":
+        print("Thinks for visit!")
+        logout_all()
+    else:
+        print("Wrong choice !")
+        extra_a_group_menu()
+
+
+def extra_a_student_menu():
+    print(print_menu())
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        pass
+    elif choice == "6":
+        print("Thinks for visit!")
+        logout_all()
+    else:
+        print("Wrong choice !")
+        extra_a_student_menu()
+
+
+def extra_s_admin_menu():
+    print(print_menu())
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        pass
+    elif choice == "6":
+        print("Thinks for visit!")
+        logout_all()
+    else:
+        print("Wrong choice !")
+        extra_a_student_menu()
+    
+
+def extra_s_teacher_menu():
+    print(print_menu())
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        pass
+    elif choice == "6":
+        print("Thinks for visit!")
+        logout_all()
+    else:
+        print("Wrong choice !")
+        extra_s_teacher_menu()
+
 
 def log_out():
     if "menu" == logout_all():
