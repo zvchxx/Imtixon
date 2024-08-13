@@ -38,6 +38,7 @@ def add_admin():
     return "menu"
 
 
+@log_decorator
 def see_admin_list(inf):
             inf_list = f""" 
     Full name: {inf['full_name']}
@@ -50,3 +51,17 @@ def see_admin_list(inf):
     Active: {inf['is_login']}
 """  
             return inf_list
+
+
+@log_decorator
+def see_all_admin():
+    all_admins = admins_manager.read()
+    num = 0
+    for admin in all_admins:
+        num += 1
+        inf = see_admin_list(admin)
+        f"""
+{print(num)}:
+    {print(inf)}
+"""
+    return "menu"
