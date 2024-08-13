@@ -26,3 +26,25 @@ def show_auth_menu():
             return show_auth_menu()
     except KeyboardInterrupt:
         return show_auth_menu()
+    
+    
+def admin_menu():
+    text = """
+    1. Show all users
+    2. Show all posts
+    3. Search with keywords   
+    4. Quit
+"""
+    print(text)
+    try:
+        user_input = input("Enter your choice: ")
+        if user_input == "1":
+            pass
+        elif user_input == "4":
+            print("\nThakns for wisit")
+            pass
+        else:
+            print("\nWrong choice !")
+            return admin_menu()
+    except KeyboardInterrupt:
+        return admin_menu()
