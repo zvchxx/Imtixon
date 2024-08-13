@@ -1,7 +1,12 @@
 from users import login, register, logout_all
 from logs import log_settings
 
-from super_admin import add_admin
+from super_admin import delete_admin, update_admin_data
+from super_admin import add_admin, see_all_admin, search_admin
+
+from super_admin import delete_teacher, update_teachers_data
+from super_admin import add_teacher, see_all_teacher, search_teacher
+
 
 def show_auth_menu():
     text = """
@@ -147,7 +152,7 @@ def extra_a_group_menu():
         pass
     elif choice == "6":
         print("Thinks for visit!")
-        logout_all()
+        admin_menu()
     else:
         print("Wrong choice !")
         admin_menu()
@@ -160,7 +165,7 @@ def extra_a_student_menu():
         pass
     elif choice == "6":
         print("Thinks for visit!")
-        logout_all()
+        admin_menu()
     else:
         print("Wrong choice !")
         admin_menu()
@@ -171,6 +176,18 @@ def extra_s_admin_menu():
     choice = input("Enter your choice: ")
     if choice == "1":
         if "menu" == add_admin():
+            extra_s_admin_menu()
+    elif choice == "2":
+        if "menu" == search_admin():
+            extra_s_admin_menu()
+    elif choice == "3":
+        if "menu" == see_all_admin():
+            extra_s_admin_menu()
+    elif choice == "4":
+        if "menu" == delete_admin():
+            extra_s_admin_menu()
+    elif choice == "5":
+        if "menu" == update_admin_data():
             extra_s_admin_menu()
     elif choice == "6":
         print("Thinks for visit!")
@@ -184,10 +201,23 @@ def extra_s_teacher_menu():
     print(print_menu())
     choice = input("Enter your choice: ")
     if choice == "1":
-        pass
+        if "menu" == add_teacher():
+            extra_s_teacher_menu()
+    elif choice == "2":
+        if "menu" == search_teacher():
+            extra_s_teacher_menu()
+    elif choice == "3":
+        if "menu" == see_all_teacher():
+            extra_s_teacher_menu()
+    elif choice == "4":
+        if "menu" == delete_teacher():
+            extra_s_teacher_menu()
+    elif choice == "5":
+        if "menu" == update_teachers_data():
+            extra_s_teacher_menu()
     elif choice == "6":
         print("Thinks for visit!")
-        logout_all()
+        super_admin_menu()
     else:
         print("Wrong choice !")
         super_admin_menu()
