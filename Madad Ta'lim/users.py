@@ -11,9 +11,6 @@ from logs import log_decorator
 
 now = datetime.now()
 
-admin_username = "00"
-admin_gmail = "00"
-admin_password = "00"
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
 smtp_sender = "abubakrrahmatullayev1001@gmail.com"
@@ -21,8 +18,9 @@ smtp_password = "etsk hbbi kuym flhe"
 
 now = datetime.now()
 
-admin_gmail = "admin@gmail.com"
-admin_password = "00"
+super_admin_phone_number = "9999"
+super_admin_gmail = "admin@gmail.com"
+super_admin_password = "admin"
 
 class People:
     def __init__(self, full_name, phone_number, gender, age, gmail, password):
@@ -107,7 +105,7 @@ def login():
     gmail = input("Enter your gmail: ")
     password = input("Enter your password: ")
  
-    if phone_number == admin_username and gmail == admin_gmail and password == admin_password:
+    if phone_number == super_admin_phone_number and gmail == super_admin_gmail and password == super_admin_password:
         return "admin"
     
     hashed_password = People.hash_password(password)
