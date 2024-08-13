@@ -65,3 +65,15 @@ def see_all_admin():
     {print(inf)}
 """
     return "menu"
+
+
+@log_decorator    
+def search_admin():
+    plane: str = input('Enter should admin phone number: ').lower().strip()
+    all_admins = admins_manager.read()
+
+    for admin in all_admins:
+        if plane in admin['phone_number']:
+            inf = see_admin_list(admin)
+            print(inf)
+    return "menu"
