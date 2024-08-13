@@ -92,3 +92,27 @@ def register():
     users_manager.add_data(data=person.__dict__)
     print("\nSaved")
     return "menu"
+
+
+def login():
+    phone_number = input("Enter your phone number: ").capitalize().strip()
+    gmail = input("Enter your gmail: ")
+    password = input("Enter your password: ")
+ 
+    if phone_number == admin_username and gmail == admin_gmail and password == admin_password:
+        return "admin"
+    
+    hashed_password = People.hash_password(password)
+
+    all_users = users_manager.read()
+
+    index = 0
+    while index < len(all_users):
+        if all_users[index]['phone_number'] == phone_number and all_users[index]['password'] == hashed_password and all_users[index]['gmail'] == gmail:
+            all_users[index]['is_login'] = True
+            users_manager.write(all_users)
+            return "menu"
+        index += 1
+    users_manager.write(all_users)
+    print("User name not found, or password is incorrect")
+    return "back"
