@@ -1,5 +1,7 @@
 import hashlib
 import smtplib
+import threading
+import random
 
 from datetime import datetime
 from file_managing import users_manager
@@ -52,3 +54,41 @@ def send_gmail(to_user, subject, message):
     except smtplib.SMTPException as e:
         print(f"Failed {e}")
 
+
+def register():
+    full_name = input("Enter your full name: ").strip().capitalize()
+    phone_number = input("Enter your phone number: ").strip().capitalize()
+    gender = input("Enter your gender (Famale/Male): ").strip().capitalize()
+    if gender != "Famale" and gender != "Male":
+        print("Incorrect gender!")
+        register()
+    age = input("Enter your age: ").strip().capitalize()
+    gmail = input("Enter your gmail: ").strip().lower()
+    if not "@gmail.com" in gmail:
+        print("Incorrect gmail!")
+        register()
+    password = input("Enter your password: ").strip()
+    confirm_password = input("Enter your confirm password: ").strip()
+
+    person = People(full_name, phone_number, gender, age, gmail, password)
+    if not person.check_password(confirm_password):
+        print("Passwords do not match")
+        return register()
+    
+    user_email = gmail
+    user_subject = "Register Code"
+    user_message = str(random.randint(0000, 9999))
+
+    t = threading.Thread(target=send_gmail, args=(user_email, user_subject, user_message,))
+    t.start()
+    print("Email is sent")
+
+    result_code = input("Enter please code: ")
+    if result_code != user_message:
+        print("Incorrect code!")
+        register()
+
+    person.password = People.hash_password(password)
+    users_manager.add_data(data=person.__dict__)
+    print("\nSaved")
+    return "menu"
