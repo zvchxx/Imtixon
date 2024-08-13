@@ -69,16 +69,47 @@ def see_all_admin():
 
 @log_decorator    
 def search_admin():
-    plane: str = input('Enter should admin phone number: ').strip()
+    admin_input: str = input('Enter should admin phone number: ').strip()
     all_admins = admins_manager.read()
 
     for admin in all_admins:
-        if plane in admin['phone_number']:
+        if admin_input in admin['phone_number']:
             inf = see_admin_list(admin)
             print(inf)
     return "menu"
 
 
+@log_decorator    
+def update_admin_data():
+    phone_number = input("Enter admin phone number: ")
+    all_admins = admins_manager.read()
+    for admin in all_admins:
+        if admin['phone_number'] == phone_number:
+            new_phone_number = input("Enter admin's new phone number: ").strip()
+            if len(new_phone_number) < 7 and "+" in new_phone_number:
+                print("Incorrect gender!")
+                update_admin_data()
+            new_full_name = input("Enter admin's new full name: ").capitalize().strip()
+            new_gender = input("Enter admin's new genderFamale/Male): ").capitalize().strip()
+            if new_gender != "Famale" and new_gender != "Male":
+                print("Incorrect gender!")
+                update_admin_data()
+            new_age = input("Enter admin's new age: ").strip()
+            new_gmail = input("Enter admin's new gmail: ").strip()
+            if not "@gmail.com" in new_gmail:
+                print("Incorrect gmail!")
+                update_admin_data()
+            new_password = input("Enter admin's new password: ").strip()
+            password = People.hash_password(new_password)
+            updated_group = People(new_full_name, new_phone_number, new_gender, new_age, new_gmail, password)
+            admins_manager.update_data(phone_number, updated_group.__dict__, 'phone_number')
+            print("\nGroup updated successfully!")
+        else:
+            print("\nGroup not found")
+    return "menu"
+
+
+@log_decorator
 def delete_admin():
     phone_number = input("Enter admin phone number: ").strip().lower()
     all_admin = admins_manager.read()
