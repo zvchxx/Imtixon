@@ -116,3 +116,13 @@ def login():
     users_manager.write(all_users)
     print("User name not found, or password is incorrect")
     return "back"
+
+
+def logout_all():
+    all_users = users_manager.read()
+    index = 0
+    while index < len(all_users):
+        all_users[index]['is_login'] = False
+        index += 1
+    users_manager.write(all_users)
+    return "menu"
