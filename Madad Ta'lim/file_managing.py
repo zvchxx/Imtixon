@@ -39,12 +39,12 @@ class JsonManager:
             return False
         
 
-    def update_data(self, identifier, updated_data, identifier_field='name'):
-        data = admins_manager.read()
+    def update_data(self, manager, identifier, updated_data, identifier_field='name'):
+        data = manager.read()
         for index, item in enumerate(data):
             if item[identifier_field] == identifier:
                 data[index] = updated_data
-                admins_manager.write(data)
+                manager.write(data)
                 return "Data is updated"
         return "Data not found"
 
