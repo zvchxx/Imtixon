@@ -1,5 +1,5 @@
 from users import login, register, logout_all, active_user
-
+from logs import log_settings
 
 def show_auth_menu():
     text = """
@@ -127,4 +127,5 @@ def log_out():
 
 
 if __name__ == "__main__":
+    log_settings()
     log_out()
