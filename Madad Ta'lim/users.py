@@ -4,7 +4,7 @@ import threading
 import random
 
 from datetime import datetime
-from file_managing import users_manager
+from file_managing import users_manager, admins_manager
 
 from logs import log_decorator
 
@@ -111,6 +111,7 @@ def login():
     hashed_password = People.hash_password(password)
 
     all_users = users_manager.read()
+    all_admins = admins_manager.read()
 
     index = 0
     while index < len(all_users):
@@ -119,8 +120,15 @@ def login():
             users_manager.write(all_users)
             return "menu"
         index += 1
+    while index < len(all_admins):
+        if all_admins[index]['phone_number'] == phone_number and all_admins[index]['password'] == hashed_password and all_admins[index]['gmail'] == gmail:
+            all_admins[index]['is_login'] = True
+            users_manager.write(all_admins)
+            return "simple_admin"
+        index += 1
     users_manager.write(all_users)
-    print("User name not found, or password is incorrect")
+    admins_manager.write(all_admins)
+    print("Phone number not found, or password is incorrect")
     return "back"
 
 
