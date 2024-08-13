@@ -1,6 +1,7 @@
-from users import login, register, logout_all, active_user
+from users import login, register, logout_all
 from logs import log_settings
 
+from super_admin import add_admin
 
 def show_auth_menu():
     text = """
@@ -19,17 +20,19 @@ def show_auth_menu():
             if "menu" == log:
                 student_menu()
             elif "admin" == log:
+                super_admin_menu()
+            elif "simple_admin" == log:
                 admin_menu()
             else:
                 show_auth_menu()
         elif user_input == "3":
             print("\nThakns for wisit")
-            return
+            logout_all()
         else:
             print("\nWrong choice !")
-            return show_auth_menu()
+            show_auth_menu()
     except KeyboardInterrupt:
-        return show_auth_menu()
+        show_auth_menu()
     
 
 def super_admin_menu():
@@ -48,12 +51,12 @@ def super_admin_menu():
             extra_s_teacher_menu()
         elif user_input == "4":
             print("\nThakns for wisit")
-            logout_all()
+            show_auth_menu()
         else:
             print("\nWrong choice !")
-            return super_admin_menu()
+            super_admin_menu()
     except KeyboardInterrupt:
-        return super_admin_menu()
+        super_admin_menu()
     
 
 def admin_menu():
@@ -74,12 +77,12 @@ def admin_menu():
             extra_a_student_menu()
         elif user_input == "6":
             print("\nThakns for wisit")
-            logout_all()
+            show_auth_menu()
         else:
             print("\nWrong choice !")
-            return admin_menu()
+            admin_menu()
     except KeyboardInterrupt:
-        return admin_menu()
+        admin_menu()
     
 
 def teacher_menu():
@@ -96,12 +99,12 @@ def teacher_menu():
             pass
         elif user_input == "4":
             print("\nThakns for wisit")
-            logout_all()
+            show_auth_menu()
         else:
             print("\nWrong choice !")
-            return teacher_menu()
+            teacher_menu()
     except KeyboardInterrupt:
-        return teacher_menu()
+        teacher_menu()
     
 
 def student_menu():
@@ -118,12 +121,12 @@ def student_menu():
             pass
         elif user_input == "4":
             print("\nThakns for wisit")
-            logout_all()
+            show_auth_menu()
         else:
             print("\nWrong choice !")
-            return student_menu()
+            student_menu()
     except KeyboardInterrupt:
-        return student_menu()
+        student_menu()
     
 
 def print_menu():
@@ -147,7 +150,7 @@ def extra_a_group_menu():
         logout_all()
     else:
         print("Wrong choice !")
-        extra_a_group_menu()
+        admin_menu()
 
 
 def extra_a_student_menu():
@@ -160,17 +163,18 @@ def extra_a_student_menu():
         logout_all()
     else:
         print("Wrong choice !")
-        extra_a_student_menu()
+        admin_menu()
 
 
 def extra_s_admin_menu():
     print(print_menu())
     choice = input("Enter your choice: ")
     if choice == "1":
-        pass
+        if "menu" == add_admin():
+            extra_s_admin_menu()
     elif choice == "6":
         print("Thinks for visit!")
-        logout_all()
+        super_admin_menu()
     else:
         print("Wrong choice !")
         extra_a_student_menu()
@@ -186,7 +190,7 @@ def extra_s_teacher_menu():
         logout_all()
     else:
         print("Wrong choice !")
-        extra_s_teacher_menu()
+        super_admin_menu()
 
 
 def log_out():
@@ -195,5 +199,5 @@ def log_out():
 
 
 if __name__ == "__main__":
-    log_settings()
     log_out()
+    log_settings()
