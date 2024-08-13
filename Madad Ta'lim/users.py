@@ -6,6 +6,8 @@ import random
 from datetime import datetime
 from file_managing import users_manager
 
+from logs import log_decorator
+
 
 now = datetime.now()
 
@@ -42,6 +44,7 @@ class People:
         return hashlib.sha256(student_password.encode()).hexdigest()
 
 
+@log_decorator
 def send_gmail(to_user, subject, message):
     code = f"Subjet: {subject}\n\n{message}"
 
@@ -55,6 +58,7 @@ def send_gmail(to_user, subject, message):
         print(f"Failed {e}")
 
 
+@log_decorator
 def register():
     full_name = input("Enter your full name: ").strip().capitalize()
     phone_number = input("Enter your phone number: ").strip()
@@ -97,6 +101,7 @@ def register():
     return "menu"
 
 
+@log_decorator
 def login():
     phone_number = input("Enter your phone number: ").capitalize().strip()
     gmail = input("Enter your gmail: ")
@@ -121,6 +126,7 @@ def login():
     return "back"
 
 
+@log_decorator
 def logout_all():
     all_users = users_manager.read()
     index = 0
