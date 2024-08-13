@@ -1,4 +1,4 @@
-from users import register, login, logout_all
+from users import login, register, logout_all, active_user
 
 
 def show_auth_menu():
@@ -12,10 +12,13 @@ def show_auth_menu():
         user_input = input("Enter your choice: ")
         if user_input == "1":
             if register():
-                pass
+                show_auth_menu()
         elif user_input == "2":
-            if "menu" == login():
-                pass
+            log = login()
+            if "menu" == log:
+                student_menu()
+            elif "admin" == log:
+                admin_menu()
             else:
                 show_auth_menu()
         elif user_input == "3":
@@ -42,7 +45,7 @@ def super_admin_menu():
             pass
         elif user_input == "4":
             print("\nThakns for wisit")
-            show_auth_menu()
+            logout_all()
         else:
             print("\nWrong choice !")
             return super_admin_menu()
@@ -64,7 +67,7 @@ def admin_menu():
             pass
         elif user_input == "4":
             print("\nThakns for wisit")
-            pass
+            logout_all()
         else:
             print("\nWrong choice !")
             return admin_menu()
@@ -86,7 +89,7 @@ def teacher_menu():
             pass
         elif user_input == "4":
             print("\nThakns for wisit")
-            pass
+            logout_all()
         else:
             print("\nWrong choice !")
             return teacher_menu()
@@ -108,9 +111,18 @@ def student_menu():
             pass
         elif user_input == "4":
             print("\nThakns for wisit")
-            pass
+            logout_all()
         else:
             print("\nWrong choice !")
             return student_menu()
     except KeyboardInterrupt:
         return student_menu()
+    
+
+def log_out():
+    if "menu" == logout_all():
+        show_auth_menu()
+
+
+if __name__ == "__main__":
+    log_out()
