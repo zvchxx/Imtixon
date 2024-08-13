@@ -5,7 +5,11 @@ import random
 from users import People
 from logs import log_decorator
 
-from file_managing import admins_manager
+from file_managing import admins_manager, teachers_manager
+
+
+                                        # Admin
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 @log_decorator
@@ -101,11 +105,11 @@ def update_admin_data():
                 update_admin_data()
             new_password = input("Enter admin's new password: ").strip()
             password = People.hash_password(new_password)
-            updated_group = People(new_full_name, new_phone_number, new_gender, new_age, new_gmail, password)
-            admins_manager.update_data(phone_number, updated_group.__dict__, 'phone_number')
-            print("\nGroup updated successfully!")
+            update_admin = People(new_full_name, new_phone_number, new_gender, new_age, new_gmail, password)
+            admins_manager.update_data(admins_manager, phone_number, update_admin.__dict__, 'phone_number')
+            print("\nAdmin updated successfully!")
         else:
-            print("\nGroup not found")
+            print("\nAdmin not found")
     return "menu"
 
 
@@ -120,3 +124,38 @@ def delete_admin():
     admins_manager.write(new_admins)
     print('\nAdmin deleted successfully!\n')
     return "menu"
+
+
+                                            # Teacher
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+@log_decorator
+def add_teacher():
+    full_name = input("Enter new teacher full name: ").strip().capitalize()
+    phone_number = input("Enter new teacher phone number: ").strip()
+    if len(phone_number) < 7 and "+" in phone_number:
+        print("Incorrect gender!")
+        add_teacher()
+    gender = input("Enter new teacher gender (Famale/Male): ").strip().capitalize()
+    if gender != "Famale" and gender != "Male":
+        print("Incorrect gender!")
+        add_teacher()
+    age = input("Enter new teacher age: ").strip().capitalize()
+    gmail = input("Enter new teacher gmail: ").strip().lower()
+    if not "@gmail.com" in gmail:
+        print("Incorrect gmail!")
+        add_teacher()
+    password = input("Enter your password: ").strip()
+    confirm_password = input("Enter your confirm password: ").strip()
+
+    person = People(full_name, phone_number, gender, age, gmail, password)
+    if not person.check_password(confirm_password):
+        print("Passwords do not match")
+        return add_teacher()
+
+    person.password = People.hash_password(password)
+    teachers_manager.add_data(data=person.__dict__)
+    print("\nSaved")
+    return "menu"
+
