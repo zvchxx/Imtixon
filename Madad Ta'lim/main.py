@@ -8,6 +8,9 @@ from super_admin import delete_teacher, update_teachers_data
 from super_admin import add_teacher, see_all_teacher, search_teacher
 
 
+from super_admin_email import see_all_users, send_message
+
+
 def show_auth_menu():
     text = """
     1. Register      
@@ -44,8 +47,9 @@ def super_admin_menu():
     text = """
     1. Admin
     2. Teacher
-    3. Send email
-    4. Quit
+    3. Message
+    4. See all users
+    5. Quit
 """
     print(text)
     try:
@@ -53,8 +57,14 @@ def super_admin_menu():
         if user_input == "1":
             extra_s_admin_menu()
         elif user_input == "2":
-            extra_s_teacher_menu()
+            extra_s_teacher_menu() 
+        elif user_input == "3":
+            if "menu" == send_message():
+                super_admin_menu()
         elif user_input == "4":
+            if "menu" == see_all_users():
+                super_admin_menu()
+        elif user_input == "5":
             print("\nThakns for wisit")
             show_auth_menu()
         else:

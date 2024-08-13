@@ -52,3 +52,6 @@ class JsonManager:
 users_manager = JsonManager("files/users.json")
 admins_manager = JsonManager("files/admins.json")
 teachers_manager = JsonManager("files/teachers.json")
+my_messages_manager = JsonManager("my_messages/message.json")
+new_messages_manager = JsonManager("new_messages/message.json")
+messages_manager = JsonManager("messages/message.json")

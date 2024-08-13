@@ -169,3 +169,30 @@
 2024-08-13 23:54:52 - logs - INFO - Function: update_teachers_data args: () kwargs: {} result: menu
 2024-08-13 23:55:29 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
 2024-08-13 23:56:32 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:15:47 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:16:03 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:17:22 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:17:35 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:18:18 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:18:36 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:19:50 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:20:01 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:22:16 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:22:30 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:22:32 - logs - ERROR - Function: send_gmail args: () kwargs: {} exception: send_gmail() missing 3 required positional arguments: 'to_user', 'subject', and 'message'
+2024-08-14 00:30:41 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:30:46 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:30:57 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:30:59 - logs - ERROR - Function: send_gmail args: () kwargs: {} exception: send_gmail() missing 3 required positional arguments: 'to_user', 'subject', and 'message'
+2024-08-14 00:31:38 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:31:42 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:31:54 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:32:10 - logs - INFO - Function: send_gmail args: ('@gmail.com', 'Ali', 'Qalisan') kwargs: {} result: None
+2024-08-14 00:35:28 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:35:42 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:35:58 - logs - INFO - Function: send_gmail args: ('@gmail.com', 'Amir', 'Qalisan') kwargs: {} result: None
+2024-08-14 00:35:58 - logs - INFO - Function: send_gmail args: ('@gmail.com', 'Amir', 'Qalisan') kwargs: {} result: None
+2024-08-14 00:35:59 - logs - INFO - Function: send_gmail args: ('toshtemirovjobir6@gmail.com', 'Amir', 'Qalisan') kwargs: {} result: None
+2024-08-14 00:41:28 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 00:41:56 - logs - INFO - Function: login args: () kwargs: {} result: admin
+2024-08-14 00:42:20 - logs - INFO - Function: send_gmail args: ('toshtemirovjobir6@gmail.com', 'Uwa', 'Tuda') kwargs: {} result: None
