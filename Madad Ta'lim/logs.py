@@ -8,7 +8,7 @@ def log_settings():
                         filename="app.log")
 
     return logging.getLogger(__name__)
-
+    
 
 logger = log_settings()
 

@@ -6,12 +6,16 @@ from super_admin import add_admin, see_all_admin, search_admin
 
 from super_admin import delete_teacher, update_teachers_data
 from super_admin import add_teacher, see_all_teacher, search_teacher
-
-
 from super_admin_email import see_all_users, send_message
-from admin import delete_group, update_group_data
 
+from admin import delete_group, update_group_data
 from admin import add_group, see_all_group, search_group
+from admin import delete_student, update_student_data
+
+
+from admin import add_student, see_all_students, search_student
+from admin import add_student_for_group
+from teacher import show_groups
 
 
 def show_auth_menu():
@@ -82,8 +86,7 @@ def admin_menu():
     1. Group
     2. Student
     3. Add studdent for grup
-    4. Search 
-    5. Accept payment
+    4. Accept payment
     6. Quit
 """
     print(text)
@@ -93,6 +96,9 @@ def admin_menu():
             extra_a_group_menu()
         elif user_input == "2":
             extra_a_student_menu()
+        elif user_input == "3":
+            if "menu" == add_student_for_group():
+                admin_menu()
         elif user_input == "6":
             print("\nThakns for wisit")
             show_auth_menu()
@@ -114,7 +120,8 @@ def teacher_menu():
     try:
         user_input = input("Enter your choice: ")
         if user_input == "1":
-            pass
+            if "menu" == see_all_group():
+                teacher_menu()
         elif user_input == "4":
             print("\nThakns for wisit")
             show_auth_menu()
@@ -188,13 +195,26 @@ def extra_a_student_menu():
     print(print_menu())
     choice = input("Enter your choice: ")
     if choice == "1":
-        pass
+        if "menu" == add_student():
+            extra_a_student_menu()
+    elif choice == "2":
+        if "menu" == search_student():
+            extra_a_student_menu()
+    elif choice == "3":
+        if "menu" == see_all_students():
+            extra_a_student_menu()
+    elif choice == "4":
+        if "menu" == delete_student():
+            extra_a_student_menu()
+    elif choice == "5":
+        if "menu" == update_student_data():
+            extra_a_student_menu()
     elif choice == "6":
         print("Thinks for visit!")
         admin_menu()
     else:
         print("Wrong choice !")
-        admin_menu()
+        extra_a_student_menu()
 
 
 def extra_s_admin_menu():

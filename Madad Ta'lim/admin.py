@@ -1,12 +1,22 @@
+import random
+
 from group import Group
 from logs import log_decorator
 
-from file_managing import groups_manager, teachers_manager
+from file_managing import groups_manager, teachers_manager, student_manager
+from student import Student
 
 all_teachers = teachers_manager.read()
 all_groups = groups_manager.read()
+all_student = student_manager.read()
+random_password = str(random.randint(00000, 99999))
 
-# @log_decorator
+
+                                    #Group
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+@log_decorator
 def add_group():
     name = input("Enter new group name: ").strip().capitalize()
     input_teacher = input("Enter teacher name: ").strip().capitalize()
@@ -17,9 +27,10 @@ def add_group():
     max_student = input("Enter max student: ").strip()
     start_time = input("Enter start time: ").strip()
     end_time = input("Enter end time: ").strip()
-    status = input("Enter group status(Days of the week): ").strip().lower()
+    status: int = input("Enter group status(month, pleace enter int): ").strip().lower()
+    price: int = input("Enter group price(pleace enter int): ")
 
-    group = Group(name, input_teacher, max_student, start_time, end_time, status)
+    group = Group(name, input_teacher, max_student, start_time, end_time, status, price)
 
     groups_manager.add_data(data=group.__dict__)
     print("\nSaved")
@@ -32,9 +43,11 @@ def see_group_list(inf):
     Name: {inf['name']}
     Teacher: {inf['teacher']}
     Max students: {inf['max_students']} 
+    Have students: {inf['have_students']}
     Start time: {inf['start_time']}
     End time: {inf['end_time']}
     Status: {inf['status']}
+    Active: {inf['active']}
     Date: {inf['date']}
 """  
             return inf_list
@@ -86,7 +99,7 @@ def update_group_data():
             groups_manager.update_data(groups_manager, name, update_gruop.__dict__, 'name')
             print("\nGroup updated successfully!")
         else:
-            print("\Group not found")
+            print("\nGroup not found")
     return "menu"
 
 
@@ -101,3 +114,176 @@ def delete_group():
     groups_manager.write(new_groups)
     print('\nGroup deleted successfully!\n')
     return "menu"
+
+
+                                        # Student
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+@log_decorator
+def add_student():
+    name = input("Enter new full name: ").strip().capitalize()
+    phone_number = input("Enter phone number: ").strip().capitalize()
+    if len(phone_number) < 7 and "+" in phone_number:
+        print("Incorrect phone number!")
+        add_student()
+    gender = input("Enter new admin gender (Famale/Male): ").strip().capitalize()
+    if gender != "Famale" and gender != "Male":
+        print("Incorrect gender!")
+        add_student()
+    age = input("Enter new admin age: ").strip().capitalize()
+    gmail = input("Enter new admin gmail: ").strip().lower()
+    if not "@gmail.com" in gmail:
+        print("Incorrect gmail!")
+        add_student()
+    password = random_password
+    print(f"Student password: {password}")
+
+    student = Student(name, phone_number, gender, age, gmail, password)
+    if not student.check_password(password):
+        print("Passwords do not match")
+        add_student()
+
+    student.password = Student.hash_password(password)
+    student_manager.add_data(data=student.__dict__)
+    print("\nSaved")
+    return "menu"
+
+
+@log_decorator
+def see_student_list(inf):
+            inf_list = f""" 
+    Full name: {inf['full_name']}
+    Phone number: {inf['phone_number']}
+    Gender: {inf['gender']} 
+    Age: {inf['age']}
+    Gmail: {inf['gmail']}
+    Password: {inf['password']}
+    ID: {inf['student_id']}
+    Group: {inf['group']}
+    Price: {inf['students_price']}
+"""  
+            return inf_list
+
+
+@log_decorator
+def see_all_students():
+    num = 0
+    for student in all_student:
+        num += 1
+        inf = see_student_list(student)
+        f"""
+{print(num)}:
+    {print(inf)}
+"""
+    return "menu"
+
+
+@log_decorator    
+def search_student():
+    phone_input: str = input('Enter should student phone number: ').strip()
+
+    for student in all_student:
+        if phone_input in student['phone_number']:
+            inf = see_student_list(student)
+            print(inf)
+    return "menu"
+
+
+@log_decorator    
+def update_student_data():
+    phone_number= input("Enter student phone number: ").strip().capitalize()
+
+    for student in all_student:
+        if student['phone_number'] == phone_number:
+            new_name = input("Enter student full name: ").strip()
+            new_phone_number = input("Enter student phone number: ").strip()
+            if len(new_phone_number) < 7 and "+" in new_phone_number:
+                print("Incorrect phone number!")
+                update_student_data()
+            new_gender = input("Enter new admin gender (Famale/Male): ").strip().capitalize()
+            if new_gender != "Famale" and new_gender != "Male":
+                print("Incorrect gender!")
+                add_student()
+            new_age = input("Enter new admin age: ").strip()
+            new_gmail = input("Enter new admin gmail: ").strip().lower()
+            if not "@gmail.com" in new_gmail:
+                print("Incorrect gmail!")
+                add_student()
+            new_password = random_password
+            print(f"Student password: {new_password}")
+
+            new_password = Student.hash_password(new_password)
+
+            update_student = Student(new_name, new_phone_number, new_gender, new_age, new_gmail, new_password)
+            student_manager.update_data(student_manager, phone_number, update_student.__dict__, 'phone_number')
+            print("\nStudent updated successfully!")
+        else:
+            print("\nStudent not found")
+    return "menu"
+
+
+@log_decorator
+def delete_student():
+    phone_number = input("Enter student phone number: ").strip()
+
+    new_students = []
+    for student in all_student:
+        if student['phone_number'] != phone_number:
+            new_students.append(student)
+    student_manager.write(new_students)
+    print('\nStudent deleted successfully!\n')
+    return "menu"
+
+
+                                        # View the list of students by group
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+# @log_decorator
+def add_student_for_group():
+    student_id: int = input("Enter student ID: ")
+    group_name = input("Enter group name: ") 
+    
+    for group in all_groups:
+        if group_name in group:
+            max_student = group ['max_students']
+            have_student = group['have_students']
+
+            group['max_students'] = max_student - 1
+            group['have_students'] = have_student + 1
+            groups_manager.write(group)
+    groups_manager.write(all_groups)
+
+    for student in all_student:
+        if student['student_id'] == student_id:
+            student['group'] = student['group'] = group_name
+            student_manager.write(all_student)
+    student_manager.write(all_student)
+    print("\nSaved")
+    return "menu"
+
+add_student_for_group()
+                                             # Accept payment
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+def accept():
+    student = input("Enter student full name: ")
+    student_phone_number = input("Enter student phone number: ")
+    group_name = input("Enter gorup name: ")
+
+    index = 0
+    while index > len(all_groups):
+        if group_name == all_groups["name"]:
+            total_price = all_groups["price"] * all_groups["status"]
+        index += 1
+    index_s = 0
+    while index > len(all_student):
+        if student_phone_number == all_student['phone_number']:
+            student_price = all_student("price")
+        index_s += 1
+    print(total_price)
+    dept = total_price - student_price
+    print(dept)
+
+accept()

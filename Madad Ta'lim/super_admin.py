@@ -13,7 +13,7 @@ def add_admin():
     full_name = input("Enter new admin full name: ").strip().capitalize()
     phone_number = input("Enter new admin phone number: ").strip()
     if len(phone_number) < 7 and "+" in phone_number:
-        print("Incorrect gender!")
+        print("Incorrect phone number!")
         add_admin()
     gender = input("Enter new admin gender (Famale/Male): ").strip().capitalize()
     if gender != "Famale" and gender != "Male":
@@ -131,7 +131,7 @@ def add_teacher():
     full_name = input("Enter new teacher full name: ").strip().capitalize()
     phone_number = input("Enter new teacher phone number: ").strip()
     if len(phone_number) < 7 and "+" in phone_number:
-        print("Incorrect gender!")
+        print("Incorrect phone number!")
         add_teacher()
     gender = input("Enter new teacher gender (Famale/Male): ").strip().capitalize()
     if gender != "Famale" and gender != "Male":
@@ -248,6 +248,7 @@ def update_teachers_data():
                 print("Incorrect gmail!")
                 update_teachers_data()
             new_password = input("Enter teacher's new password: ").strip()
+
             password = People.hash_password(new_password)
             update_teacher = People(new_full_name, new_phone_number, new_gender, new_age, new_gmail, password)
             teachers_manager.update_data(teachers_manager,phone_number, update_teacher.__dict__, 'phone_number')
