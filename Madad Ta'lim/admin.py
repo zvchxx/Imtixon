@@ -4,7 +4,7 @@ from group import Group
 from logs import log_decorator
 
 from file_managing import groups_manager, teachers_manager, student_manager
-from student import Student
+from users import Student
 
 all_teachers = teachers_manager.read()
 all_groups = groups_manager.read()
@@ -250,13 +250,13 @@ def add_student_for_group():
             if grp['subject'] == group_name:
                 grp['max_students'] = grp['max_students'] - 1
                 grp['have_students'] = grp['have_students'] + 1
-                groups_manager.write(grp)
-        groups_manager.write(grp)
+                groups_manager.write_to_simple(grp)
+        groups_manager.write_to_simple(grp)
         for student in all_student:
             if student['student_id'] == student_id:
                 student['group'] = student['group'] = group_name
-                student_manager.write(all_student)
-        student_manager.write(student)
+                student_manager.write_to_simple(all_student)
+        student_manager.write_to_simple(student)
         print("\nSaved")
         return "menu"
     except ValueError:

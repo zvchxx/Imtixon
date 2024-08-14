@@ -7,7 +7,7 @@ from file_managing import student_manager
 all_groups = groups_manager.read()
 all_students = student_manager.read()
 
-# @log_decorator
+@log_decorator
 def start_lesson():
     group_name = input("Enter group name: ").strip().lower()
     start = datetime.now()
@@ -32,8 +32,6 @@ def start_lesson():
     else:
         print("\nWrong choice !")
         start_lesson()
-
-start_lesson()
 
 
 @log_decorator

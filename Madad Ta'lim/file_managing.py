@@ -30,11 +30,17 @@ class JsonManager:
                 return json.load(file)
         return []
 
-    def write(self, data):
+    def write_to_simple(self, data):
         new_data = []
         with open(self.file_name, 'w') as file:
             new_data.append(data)
             json.dump(new_data, file, indent=4)
+
+
+    def write(self, data):
+        with open(self.file_name, 'w') as file:
+            json.dump(data, file, indent=4)
+
 
     def add_data(self, data: dict):
         all_data = self.read()
@@ -63,7 +69,6 @@ class JsonManager:
         return "Data not found"
 
 
-users_manager = JsonManager("files/users.json")
 admins_manager = JsonManager("files/admins.json")
 teachers_manager = JsonManager("files/teachers.json")
 student_manager = JsonManager("files/students.json")
@@ -71,4 +76,3 @@ groups_manager = JsonManager("groups/gruops.json")
 my_messages_manager = JsonManager("my_messages/messages.json")
 new_messages_manager = JsonManager("new_messages/messages.json")
 messages_manager = JsonManager("messages/messages.json")
-accept_manager = JsonManager("accepts/accepts.json")

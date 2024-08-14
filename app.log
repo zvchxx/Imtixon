@@ -52,3 +52,10 @@
 
 2024-08-14 14:53:44 - logs - INFO - Function: view_student args: () kwargs: {} result: menu
 2024-08-14 15:13:44 - logs - ERROR - Function: start_lesson args: () kwargs: {} exception: unsupported operand type(s) for -: 'str' and 'str'
+2024-08-14 15:47:11 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 15:47:43 - logs - INFO - Function: send_gmail args: ('toshtemirovjobir6@gmail.com', 'Register Code', '7093') kwargs: {} result: None
+2024-08-14 15:56:42 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 15:57:57 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 16:01:22 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 16:01:40 - logs - INFO - Function: login args: () kwargs: {} result: menu
+2024-08-14 16:02:03 - logs - INFO - Function: login args: () kwargs: {} result: back

@@ -4,12 +4,13 @@ import threading
 import random
 
 from datetime import datetime
-from file_managing import users_manager, admins_manager
+from file_managing import admins_manager, teachers_manager, student_manager
 
 from logs import log_decorator
 
 
 now = datetime.now()
+student_id: str = random.randint(0000, 1111)
 
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
@@ -40,6 +41,14 @@ class People:
     @staticmethod
     def hash_password(student_password):
         return hashlib.sha256(student_password.encode()).hexdigest()
+    
+
+class Student(People):
+    def __init__(self,full_name, phone_number, gender, age, gmail, password):
+        super().__init__(full_name, phone_number, gender, age, gmail, password)
+        self.student_id = student_id
+        self.students_price = 0
+        self.gruop = False
 
 
 @log_decorator
@@ -56,7 +65,7 @@ def send_gmail(to_user, subject, message):
         print(f"Failed {e}")
 
 
-# @log_decorator
+@log_decorator
 def register():
     full_name = input("Enter your full name: ").strip().capitalize()
     phone_number = input("Enter your phone number: ").strip()
@@ -75,7 +84,7 @@ def register():
     password = input("Enter your password: ").strip()
     confirm_password = input("Enter your confirm password: ").strip()
 
-    person = People(full_name, phone_number, gender, age, gmail, password)
+    person = Student(full_name, phone_number, gender, age, gmail, password)
     if not person.check_password(confirm_password):
         print("Passwords do not match")
         return register()
@@ -93,13 +102,13 @@ def register():
         print("Incorrect code!")
         register()
 
-    person.password = People.hash_password(password)
-    users_manager.add_data(data=person.__dict__)
+    person.password = Student.hash_password(password)
+    student_manager.add_data(data=person.__dict__)
     print("\nSaved")
     return "menu"
 
 
-# @log_decorator
+@log_decorator
 def login():
     phone_number = input("Enter your phone number: ").capitalize().strip()
     gmail = input("Enter your gmail: ")
@@ -108,47 +117,61 @@ def login():
     if phone_number == super_admin_phone_number and gmail == super_admin_gmail and password == super_admin_password:
         return "admin"
     
-    hashed_password = People.hash_password(password)
+    hashed_password = Student.hash_password(password)
 
-    all_users = users_manager.read()
+    all_students = student_manager.read()
     all_admins = admins_manager.read()
+    all_teachers = teachers_manager.read()
+
 
     index_a = 0
     while index_a < len(all_admins):
         if all_admins[index_a]['phone_number'] == phone_number and all_admins[index_a]['password'] == hashed_password and all_admins[index_a]['gmail'] == gmail:
             all_admins[index_a]['is_login'] = True
             admins_manager.write(all_admins)
+            return "simple_admin"
         index_a += 1
-        return "simple_admin"
+        
+    admins_manager.write(all_admins)
+        
+    index_t = 0
+
+    while index_a < len(all_teachers):
+        if all_teachers[index_t]['phone_number'] == phone_number and all_teachers[index_t]['password'] == hashed_password and all_teachers[index_t]['gmail'] == gmail:
+            all_teachers[index_t]['is_login'] = True
+            teachers_manager.write(all_teachers)
+            return "simple_teacher"
+        index_t += 1
+
+    teachers_manager.write(all_teachers)
 
     index = 0
-    while index < len(all_users):
-        if all_users[index]['phone_number'] == phone_number and all_users[index]['password'] == hashed_password and all_users[index]['gmail'] == gmail:
-            all_users[index]['is_login'] = True
-            users_manager.write(all_users)
+    while index < len(all_students):
+        if all_students[index]['phone_number'] == phone_number and all_students[index]['password'] == hashed_password and all_students[index]['gmail'] == gmail:
+            all_students[index]['is_login'] = True
+            student_manager.write(all_students)
+            return "menu"
         index += 1
-        return "menu"
 
-        
-    users_manager.write(all_users)
-    admins_manager.write(all_admins)
+    student_manager.write(all_students)
+    
     print("Phone number not found, or password is incorrect")
     return "back"
 
 
 @log_decorator
 def logout_all():
-    all_users = users_manager.read()
+    all_users = student_manager.read()
     index = 0
     while index < len(all_users):
         all_users[index]['is_login'] = False
         index += 1
-    users_manager.write(all_users)
+    student_manager.write(all_users)
     return "menu"
 
 
 def active_user():
-    students = users_manager.read()
+    students = student_manager.read()
     for student in students:
         if student['is_login']:
             return student

@@ -12,5 +12,18 @@
         "students_price": 10,
         "gruop": false,
         "group": "english"
+    },
+    {
+        "full_name": "Abu",
+        "phone_number": "+654123",
+        "gender": "Male",
+        "age": "44",
+        "gmail": "toshtemirovjobir6@gmail.com",
+        "password": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+        "date": "14/08/2024 15:47:11",
+        "is_login": true,
+        "student_id": 223,
+        "students_price": 0,
+        "gruop": false
     }
 ]

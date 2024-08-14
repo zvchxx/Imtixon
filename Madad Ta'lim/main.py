@@ -40,6 +40,8 @@ def show_auth_menu():
                 super_admin_menu()
             elif "simple_admin" == log:
                 admin_menu()
+            elif "simple_teacher" == log:
+                teacher_menu()
             else:
                 show_auth_menu()
         elif user_input == "3":
@@ -132,6 +134,9 @@ def teacher_menu():
                 teacher_menu()
         elif user_input == "3":
             if "menu" == view_student():
+                teacher_menu()
+        elif user_input == "3":
+            if "menu" == start_lesson():
                 teacher_menu()
         elif user_input == "4":
             print("\nThakns for wisit")

@@ -1,7 +1,7 @@
 import threading
 import smtplib
 
-from file_managing import users_manager, messages_manager
+from file_managing import messages_manager, student_manager
 from file_managing import my_messages_manager, new_messages_manager
 
 from users import send_gmail
@@ -12,7 +12,7 @@ from logs import log_decorator
 
 @log_decorator
 def see_all_users():
-    all_users = users_manager.read()
+    all_users = student_manager.read()
     num = 0
     for user in all_users:
         num += 1
@@ -54,7 +54,7 @@ def send_gmail(to_user, subject, message):
 
 @log_decorator
 def sent_all():
-    all_users = users_manager.read()
+    all_users = student_manager.read()
 
     user_subject = input("Subject: ")
     message = input("Message: ")
@@ -72,14 +72,14 @@ def sent_all():
 
         t = threading.Thread(target=send_gmail, args=(user_email, user_subject, message,))
         t.start()     
-        users_manager.write(all_users)
+        student_manager.write(all_users)
     print("\nSent")
     return "menu"
 
 
 @log_decorator
 def sent_only_girls():
-    all_users = users_manager.read()
+    all_users = student_manager.read()
 
     user_subject = input("Subject: ")
     message = input("Message: ")
@@ -98,14 +98,14 @@ def sent_only_girls():
 
             t = threading.Thread(target=send_gmail, args=(user_email, user_subject, message,))
             t.start()     
-            users_manager.write(all_users)
+            student_manager.write(all_users)
     print("\nSent")
     return "menu"
 
 
 @log_decorator
 def sent_only_boys():
-    all_users = users_manager.read()
+    all_users = student_manager.read()
 
     user_subject = input("Subject: ")
     message = input("Message: ")
@@ -124,7 +124,7 @@ def sent_only_boys():
 
             t = threading.Thread(target=send_gmail, args=(user_email, user_subject, message,))
             t.start()     
-            users_manager.write(all_users)
+            student_manager.write(all_users)
     print("\nSent")
     return "menu"
 
