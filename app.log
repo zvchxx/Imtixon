@@ -1,2 +1,54 @@
 2024-08-14 05:49:54 - logs - ERROR - Function: add_student_for_group args: () kwargs: {} exception: 0
 2024-08-14 06:40:14 - logs - ERROR - Function: select_group args: () kwargs: {} exception: string indices must be integers, not 'str'
+2024-08-14 13:26:32 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 13:26:49 - logs - ERROR - Function: login args: () kwargs: {} exception: 'int' object is not subscriptable
+2024-08-14 13:27:10 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 13:27:13 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 13:37:37 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 13:37:40 - logs - INFO - Function: login args: () kwargs: {} result: simple_admin
+2024-08-14 13:38:16 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 13:38:19 - logs - INFO - Function: login args: () kwargs: {} result: menu
+2024-08-14 13:56:16 - logs - INFO - Function: logout_all args: () kwargs: {} result: menu
+2024-08-14 13:56:21 - logs - ERROR - Function: logout_all args: () kwargs: {} exception: list indices must be integers or slices, not str
+2024-08-14 13:56:47 - logs - ERROR - Function: logout_all args: () kwargs: {} exception: list indices must be integers or slices, not str
+2024-08-14 13:57:26 - logs - ERROR - Function: logout_all args: () kwargs: {} exception: list indices must be integers or slices, not str
+2024-08-14 13:57:45 - logs - ERROR - Function: logout_all args: () kwargs: {} exception: list indices must be integers or slices, not str
+2024-08-14 13:58:17 - logs - INFO - Function: add_student_for_group args: () kwargs: {} result: menu
+2024-08-14 13:59:38 - logs - INFO - Function: add_student_for_group args: () kwargs: {} result: menu
+2024-08-14 14:08:42 - logs - ERROR - Function: logout_all args: () kwargs: {} exception: list indices must be integers or slices, not str
+2024-08-14 14:08:54 - logs - ERROR - Function: logout_all args: () kwargs: {} exception: list indices must be integers or slices, not str
+2024-08-14 14:08:59 - logs - ERROR - Function: logout_all args: () kwargs: {} exception: list indices must be integers or slices, not str
+2024-08-14 14:09:42 - logs - ERROR - Function: logout_all args: () kwargs: {} exception: list indices must be integers or slices, not str
+2024-08-14 14:13:03 - logs - INFO - Function: add_admin args: () kwargs: {} result: menu
+2024-08-14 14:13:44 - logs - INFO - Function: add_teacher args: () kwargs: {} result: menu
+2024-08-14 14:14:49 - logs - INFO - Function: add_group args: () kwargs: {} result: menu
+2024-08-14 14:15:36 - logs - ERROR - Function: add_student args: () kwargs: {} exception: Student.__init__() missing 1 required positional argument: 'students_price'
+2024-08-14 14:16:27 - logs - ERROR - Function: add_student args: () kwargs: {} exception: Student.__init__() missing 1 required positional argument: 'students_price'
+2024-08-14 14:19:49 - logs - INFO - Function: add_student_for_group args: () kwargs: {} result: menu
+2024-08-14 14:21:04 - logs - INFO - Function: add_student_for_group args: () kwargs: {} result: menu
+2024-08-14 14:33:53 - logs - INFO - Function: add_student_for_group args: () kwargs: {} result: menu
+2024-08-14 14:34:22 - logs - INFO - Function: add_accept args: () kwargs: {} result: menu
+2024-08-14 14:48:28 - logs - INFO - Function: see_student_list args: ({'full_name': 'A', 'phone_number': '+654123', 'gender': 'Male', 'age': '44', 'gmail': '@gmail.com', 'password': '731dccf8c2d02b03217e39248f36d8cc3debf165bef649fc751ff47a52b3c204', 'date': '14/08/2024 14:18:54', 'is_login': True, 'student_id': 1093, 'students_price': 10, 'gruop': False, 'group': 'english'},) kwargs: {} result:  
+    Full name: A
+    Phone number: +654123
+    Gender: Male 
+    Age: 44
+    Gmail: @gmail.com
+    Password: 731dccf8c2d02b03217e39248f36d8cc3debf165bef649fc751ff47a52b3c204
+    ID: 1093
+    Group: english
+    Price: 10
+
+2024-08-14 14:53:44 - logs - INFO - Function: see_student_list args: ({'full_name': 'A', 'phone_number': '+654123', 'gender': 'Male', 'age': '44', 'gmail': '@gmail.com', 'password': '731dccf8c2d02b03217e39248f36d8cc3debf165bef649fc751ff47a52b3c204', 'date': '14/08/2024 14:18:54', 'is_login': False, 'student_id': 1093, 'students_price': 10, 'gruop': False, 'group': 'english'},) kwargs: {} result:  
+    Full name: A
+    Phone number: +654123
+    Gender: Male 
+    Age: 44
+    Gmail: @gmail.com
+    Password: 731dccf8c2d02b03217e39248f36d8cc3debf165bef649fc751ff47a52b3c204
+    ID: 1093
+    Group: english
+    Price: 10
+
+2024-08-14 14:53:44 - logs - INFO - Function: view_student args: () kwargs: {} result: menu
+2024-08-14 15:13:44 - logs - ERROR - Function: start_lesson args: () kwargs: {} exception: unsupported operand type(s) for -: 'str' and 'str'

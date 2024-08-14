@@ -56,7 +56,7 @@ def send_gmail(to_user, subject, message):
         print(f"Failed {e}")
 
 
-@log_decorator
+# @log_decorator
 def register():
     full_name = input("Enter your full name: ").strip().capitalize()
     phone_number = input("Enter your phone number: ").strip()
@@ -99,7 +99,7 @@ def register():
     return "menu"
 
 
-@log_decorator
+# @log_decorator
 def login():
     phone_number = input("Enter your phone number: ").capitalize().strip()
     gmail = input("Enter your gmail: ")

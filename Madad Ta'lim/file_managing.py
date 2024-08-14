@@ -31,8 +31,10 @@ class JsonManager:
         return []
 
     def write(self, data):
+        new_data = []
         with open(self.file_name, 'w') as file:
-            json.dump(data, file, indent=4)
+            new_data.append(data)
+            json.dump(new_data, file, indent=4)
 
     def add_data(self, data: dict):
         all_data = self.read()

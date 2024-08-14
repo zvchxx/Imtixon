@@ -1,22 +1,12 @@
 [
     {
-        "full_name": "Ali",
-        "phone_number": "+123456",
+        "full_name": "Aza",
+        "phone_number": "+987456",
         "gender": "Male",
         "age": "44",
         "gmail": "@gmail.com",
-        "password": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
-        "date": "13/08/2024 23:03:18",
-        "is_login": false
-    },
-    {
-        "full_name": "Azart",
-        "phone_number": "+369852",
-        "gender": "Male",
-        "age": "44",
-        "gmail": "@gmail.com",
-        "password": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
-        "date": "14/08/2024 01:38:13",
-        "is_login": false
+        "password": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+        "date": "14/08/2024 14:12:29",
+        "is_login": true
     }
 ]

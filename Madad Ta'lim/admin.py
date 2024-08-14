@@ -18,7 +18,7 @@ random_password = str(random.randint(00000, 99999))
 
 @log_decorator
 def add_group():
-    name = input("Enter new group name: ").strip().capitalize()
+    name = input("Enter new group name: ").strip().lower()
     input_teacher = input("Enter teacher name: ").strip().capitalize()
     for teacher in all_teachers:
         if teacher['full_name'] != input_teacher:
@@ -40,7 +40,7 @@ def add_group():
 @log_decorator
 def see_group_list(inf):
             inf_list = f""" 
-    Name: {inf['name']}
+    Subject: {inf['subject']}
     Teacher: {inf['teacher']}
     Max students: {inf['max_students']} 
     Have students: {inf['have_students']}
@@ -71,7 +71,7 @@ def search_group():
     name_input: str = input('Enter should group name: ').strip().capitalize()
 
     for group in all_groups:
-        if name_input in group['name']:
+        if name_input in group['subject']:
             inf = see_group_list(group)
             print(inf)
     return "menu"
@@ -82,7 +82,7 @@ def update_group_data():
     name = input("Enter group name: ").strip().capitalize()
 
     for group in all_groups:
-        if group['name'] == name:
+        if group['subject'] == name:
             new_name = input("Enter group's new name: ").strip()
             new_teacher = input("Enter group's new teacher: ").capitalize().strip()
             for teacher in all_teachers:
@@ -96,7 +96,7 @@ def update_group_data():
 
 
             update_gruop = Group(new_name, new_teacher, new_max_student, new_start_time, new_end_time, new_status)
-            groups_manager.update_data(groups_manager, name, update_gruop.__dict__, 'name')
+            groups_manager.update_data(groups_manager, name, update_gruop.__dict__, 'subject')
             print("\nGroup updated successfully!")
         else:
             print("\nGroup not found")
@@ -109,7 +109,7 @@ def delete_group():
 
     new_groups = []
     for group in all_groups:
-        if group['name'].lower() != name.lower():
+        if group['subjecte'].lower() != name.lower():
             new_groups.append(group)
     groups_manager.write(new_groups)
     print('\nGroup deleted successfully!\n')
@@ -240,50 +240,46 @@ def delete_student():
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-# @log_decorator
+@log_decorator
 def add_student_for_group():
-    student_id: int = input("Enter student ID: ")
-    group_name = input("Enter group name: ") 
-    
-    for group in all_groups:
-        if group_name in group:
-            max_student = group ['max_students']
-            have_student = group['have_students']
+    try:
+        student_id = int(input("Enter student ID: "))
+        group_name = input("Enter group name: ") 
+        
+        for grp in all_groups:
+            if grp['subject'] == group_name:
+                grp['max_students'] = grp['max_students'] - 1
+                grp['have_students'] = grp['have_students'] + 1
+                groups_manager.write(grp)
+        groups_manager.write(grp)
+        for student in all_student:
+            if student['student_id'] == student_id:
+                student['group'] = student['group'] = group_name
+                student_manager.write(all_student)
+        student_manager.write(student)
+        print("\nSaved")
+        return "menu"
+    except ValueError:
+        print("Error input")
+        add_student_for_group()
 
-            group['max_students'] = max_student - 1
-            group['have_students'] = have_student + 1
-            groups_manager.write(group)
-    groups_manager.write(all_groups)
 
-    for student in all_student:
-        if student['student_id'] == student_id:
-            student['group'] = student['group'] = group_name
-            student_manager.write(all_student)
-    student_manager.write(all_student)
-    print("\nSaved")
-    return "menu"
+                                    # Accept
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-add_student_for_group()
-                                             # Accept payment
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def accept():
-    student = input("Enter student full name: ")
-    student_phone_number = input("Enter student phone number: ")
-    group_name = input("Enter gorup name: ")
-
-    index = 0
-    while index > len(all_groups):
-        if group_name == all_groups["name"]:
-            total_price = all_groups["price"] * all_groups["status"]
-        index += 1
-    index_s = 0
-    while index > len(all_student):
-        if student_phone_number == all_student['phone_number']:
-            student_price = all_student("price")
-        index_s += 1
-    print(total_price)
-    dept = total_price - student_price
-    print(dept)
-
-accept()
+@log_decorator
+def add_accept():
+    try: 
+        student_id = int(input("Enter student ID: "))
+        price = int(input("Enter amount (pleace enter int): "))
+        for student in all_student:
+            if student['student_id'] == student_id:
+                student['students_price'] = price
+                student_manager.write(all_student)
+        student_manager.write(student)
+        print("\nSaved")
+        return "menu"
+    except ValueError:
+        print("Error input")
+        add_accept()

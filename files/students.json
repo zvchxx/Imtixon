@@ -1,15 +1,16 @@
 [
     {
-        "full_name": "s",
+        "full_name": "A",
         "phone_number": "+654123",
         "gender": "Male",
         "age": "44",
         "gmail": "@gmail.com",
-        "password": "a5dcc9ceba2f9f357609fcf55ce28defa08d979816a8b15c8b3c8d93f9851d54",
-        "date": "14/08/2024 03:01:24",
+        "password": "731dccf8c2d02b03217e39248f36d8cc3debf165bef649fc751ff47a52b3c204",
+        "date": "14/08/2024 14:18:54",
         "is_login": false,
-        "student_id": "143",
-        "students_price": 0,
+        "student_id": 1093,
+        "students_price": 10,
+        "gruop": false,
         "group": "english"
     }
 ]

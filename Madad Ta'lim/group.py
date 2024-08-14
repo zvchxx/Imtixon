@@ -4,8 +4,8 @@ now = datetime.now()
 
 
 class Group:
-    def __init__(self, name, teacher, max_students, start_time, end_time, status, price):
-        self.name = name
+    def __init__(self, subject, teacher, max_students, start_time, end_time, status, price):
+        self.subject = subject
         self.teacher = teacher
         self.max_students = int(max_students)
         self.have_students = 0

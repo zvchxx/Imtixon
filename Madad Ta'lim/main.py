@@ -14,8 +14,10 @@ from admin import delete_student, update_student_data
 
 
 from admin import add_student, see_all_students, search_student
-from admin import add_student_for_group
-from teacher import show_groups
+from admin import add_student_for_group, add_accept
+from student import view_student
+
+from teacher import view_student, start_lesson
 
 
 def show_auth_menu():
@@ -99,6 +101,9 @@ def admin_menu():
         elif user_input == "3":
             if "menu" == add_student_for_group():
                 admin_menu()
+        elif user_input == "4":
+            if "menu" == add_accept():
+                admin_menu()        
         elif user_input == "6":
             print("\nThakns for wisit")
             show_auth_menu()
@@ -122,6 +127,12 @@ def teacher_menu():
         if user_input == "1":
             if "menu" == see_all_group():
                 teacher_menu()
+        elif user_input == "2":
+            if "menu" == view_student():
+                teacher_menu()
+        elif user_input == "3":
+            if "menu" == view_student():
+                teacher_menu()
         elif user_input == "4":
             print("\nThakns for wisit")
             show_auth_menu()
@@ -143,7 +154,14 @@ def student_menu():
     try:
         user_input = input("Enter your choice: ")
         if user_input == "1":
-            pass
+            if "menu" == see_all_group():
+                student_menu()
+        elif user_input == '2':
+            if "menu" == view_student():
+                student_menu()
+        elif user_input == '3':
+            if "menu" == update_student_data():
+                student_menu()
         elif user_input == "4":
             print("\nThakns for wisit")
             show_auth_menu()

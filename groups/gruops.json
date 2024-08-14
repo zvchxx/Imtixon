@@ -1,12 +1,14 @@
-{
-    "name": "english",
-    "teacher": "Azi",
-    "max_students": 10,
-    "have_students": 0,
-    "start_time": "10:00",
-    "end_time": "12:00",
-    "status": 4,
-    "price": 10000,
-    "active": false,
-    "date": "14/08/2024 02:11:21"
-}
+[
+    {
+        "subject": "english",
+        "teacher": "Azi",
+        "max_students": 9,
+        "have_students": 1,
+        "start_time": "15:00",
+        "end_time": "17:00",
+        "status": "4",
+        "price": "10000",
+        "active": false,
+        "date": "14/08/2024 14:12:29"
+    }
+]
